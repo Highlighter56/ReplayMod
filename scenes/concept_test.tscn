@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://urnqgp1sdo68"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_4setp"]
+[ext_resource type="Script" path="res://scripts/record_manager.gd" id="1_4setp"]
 [ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="1_6nut4"]
 [ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="2_rmc1g"]
 
@@ -208,10 +208,12 @@ sources/1 = SubResource("TileSetAtlasSource_k7csn")
 [node name="Concept_Test" type="Node2D"]
 
 [node name="Game_Manager" type="Node2D" parent="."]
+
+[node name="Record_Manager" type="Node2D" parent="."]
 script = ExtResource("1_4setp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 
 [node name="Mid_Ground" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -220,10 +222,12 @@ tile_set = SubResource("TileSet_hcpa0")
 
 [node name="Player" parent="." instance=ExtResource("2_rmc1g")]
 unique_name_in_owner = true
+z_index = 1
 SPEED = 200.0
 JUMP_VELOCITY = -300.0
 
 [node name="RecordedRun" type="CharacterBody2D" parent="."]
+visible = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="RecordedRun"]
 modulate = Color(0.85098, 0.568627, 0.176471, 1)
@@ -233,6 +237,6 @@ mesh = SubResource("CapsuleMesh_vbc7i")
 
 [node name="Record_Indicator" type="MeshInstance2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(126, -65)
-scale = Vector2(28.0318, 26)
+position = Vector2(126, -64.5)
+scale = Vector2(28.0318, 27)
 mesh = SubResource("SphereMesh_g0hle")

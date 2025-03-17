@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bw05ptiq1efv"]
+[gd_scene load_steps=26 format=3 uid="uid://bw05ptiq1efv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hk50n"]
 [ext_resource type="Texture2D" uid="uid://6obn1y4a62rh" path="res://assessts/sprites/knight.png" id="1_npm5f"]
@@ -156,6 +156,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gm4tm"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq55u"]
 radius = 4.0
 height = 14.0
@@ -164,10 +166,16 @@ height = 14.0
 script = ExtResource("1_hk50n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_24c2v")
 animation = &"run"
 frame_progress = 0.688676
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-2.38419e-07, -7.5)
+scale = Vector2(10, 7.5)
+mesh = SubResource("CapsuleMesh_gm4tm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
