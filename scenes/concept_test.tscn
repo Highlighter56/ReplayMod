@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://urnqgp1sdo68"]
+[gd_scene load_steps=9 format=4 uid="uid://urnqgp1sdo68"]
 
-[ext_resource type="Script" path="res://scripts/record_manager.gd" id="1_4setp"]
 [ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="1_6nut4"]
+[ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="1_7ry4w"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_lugf2"]
 [ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="2_rmc1g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g0hle"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vbc7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7csn"]
 resource_name = "tiles"
@@ -201,16 +206,28 @@ texture = ExtResource("1_6nut4")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_k7csn")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vbc7i"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_g0hle"]
-
 [node name="Concept_Test" type="Node2D"]
 
 [node name="Game_Manager" type="Node2D" parent="."]
+script = ExtResource("1_lugf2")
 
 [node name="Record_Manager" type="Node2D" parent="."]
-script = ExtResource("1_4setp")
+script = ExtResource("1_7ry4w")
+
+[node name="Record_Indicator" type="MeshInstance2D" parent="Record_Manager"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(126, -64.5)
+scale = Vector2(28.0318, 27)
+mesh = SubResource("SphereMesh_g0hle")
+
+[node name="Recorded_Run" type="CharacterBody2D" parent="Record_Manager"]
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Record_Manager/Recorded_Run"]
+modulate = Color(0.85098, 0.568627, 0.176471, 1)
+position = Vector2(0, -8)
+scale = Vector2(10, 8)
+mesh = SubResource("CapsuleMesh_vbc7i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -225,18 +242,3 @@ unique_name_in_owner = true
 z_index = 1
 SPEED = 200.0
 JUMP_VELOCITY = -300.0
-
-[node name="RecordedRun" type="CharacterBody2D" parent="."]
-visible = false
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="RecordedRun"]
-modulate = Color(0.85098, 0.568627, 0.176471, 1)
-position = Vector2(0, -8)
-scale = Vector2(10, 8)
-mesh = SubResource("CapsuleMesh_vbc7i")
-
-[node name="Record_Indicator" type="MeshInstance2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(126, -64.5)
-scale = Vector2(28.0318, 27)
-mesh = SubResource("SphereMesh_g0hle")
