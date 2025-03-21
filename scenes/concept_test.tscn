@@ -1,13 +1,18 @@
-[gd_scene load_steps=9 format=4 uid="uid://urnqgp1sdo68"]
+[gd_scene load_steps=11 format=4 uid="uid://urnqgp1sdo68"]
 
 [ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="1_6nut4"]
 [ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="1_7ry4w"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_lugf2"]
 [ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="2_rmc1g"]
+[ext_resource type="Script" path="res://scripts/recorded_run.gd" id="3_4rlji"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_g0hle"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vbc7i"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oc8lc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqlax"]
+radius = 4.0
+height = 14.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7csn"]
 resource_name = "tiles"
@@ -203,7 +208,8 @@ texture = ExtResource("1_6nut4")
 2:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_hcpa0"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_k7csn")
 
 [node name="Concept_Test" type="Node2D"]
@@ -221,13 +227,20 @@ scale = Vector2(28.0318, 27)
 mesh = SubResource("SphereMesh_g0hle")
 
 [node name="Recorded_Run" type="CharacterBody2D" parent="Record_Manager"]
-visible = false
+position = Vector2(17, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_4rlji")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Record_Manager/Recorded_Run"]
-modulate = Color(0.85098, 0.568627, 0.176471, 1)
-position = Vector2(0, -8)
-scale = Vector2(10, 8)
-mesh = SubResource("CapsuleMesh_vbc7i")
+modulate = Color(0.88841, 0.557869, 1.34766e-06, 1)
+position = Vector2(-2.38419e-07, -7.5)
+scale = Vector2(10, 7.5)
+mesh = SubResource("CapsuleMesh_oc8lc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Record_Manager/Recorded_Run"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_rqlax")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -240,5 +253,3 @@ tile_set = SubResource("TileSet_hcpa0")
 [node name="Player" parent="." instance=ExtResource("2_rmc1g")]
 unique_name_in_owner = true
 z_index = 1
-SPEED = 200.0
-JUMP_VELOCITY = -300.0
