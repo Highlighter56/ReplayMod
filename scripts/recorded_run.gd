@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+# Character Movment Properties
 var SPEED = 200
 var JUMP_VELOCITY = -300.0
 
@@ -11,17 +11,16 @@ var jump_now:bool = false
 var go_left:bool = false
 var go_right:bool = false
 
+var appliedInitialConditions:bool = false
+var initial_velocity:Vector2
+var initial_position:Vector2
 
 func _ready() -> void:
-	
-	#print(record_manager.actions.JUMP_PRESSED)
-	#print(record_manager.actions.LEFT_PRESSED)
-	#print(record_manager.actions.LEFT_RELEASED)
-	#print(record_manager.actions.RIGHT_PRESSED)
-	#print(record_manager.actions.RIGHT_RELEASED)
 	pass
 
 func _physics_process(delta: float) -> void:
+	
+#	Moves the Character / Plays the recording
 	if record_manager.playingRecording:
 		#print("Should be Playing")
 		
@@ -47,9 +46,10 @@ func _physics_process(delta: float) -> void:
 func change_state(state:int):
 	#print(state)
 	match state:
-		record_manager.actions.JUMP_PRESSED:
-			#print("Jump Now")
-			jump_now=true
+#		When to apply initial conditions
+		record_manager.actions.START_REPLAY:
+			position=initial_position
+			velocity=initial_velocity
 		record_manager.actions.LEFT_PRESSED:
 			#print("Go Left")
 			go_left=true
@@ -62,7 +62,10 @@ func change_state(state:int):
 		record_manager.actions.RIGHT_RELEASED:
 			#print("Stop Right")
 			go_right=false
-		record_manager.actions.END:
+		record_manager.actions.JUMP_PRESSED:
+			#print("Jump Now")
+			jump_now=true
+		record_manager.actions.END_REPLAY:
 			toDefault()
 	#printState()
 
@@ -87,6 +90,7 @@ func toDefault():
 	jump_now=false
 	go_left=false
 	go_right=false
+	appliedInitialConditions = false
 
 # Used for Debuging
 func printState():

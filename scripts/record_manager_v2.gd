@@ -1,5 +1,5 @@
 extends Node2D
-# V2
+# V2 - Macro System
 
 # References
 @onready var player: CharacterBody2D = %Player
@@ -15,8 +15,8 @@ extends Node2D
 # inputs.x = time  inputs.y = action
 var recorded_inputs:Array = []
 # This enum will be used to note which action occured
-enum actions 	{JUMP_PRESSED, LEFT_PRESSED, LEFT_RELEASED, RIGHT_PRESSED, 
-				RIGHT_RELEASED, INTERACT, END}
+enum actions {START_REPLAY, LEFT_PRESSED, LEFT_RELEASED, RIGHT_PRESSED, 
+			  RIGHT_RELEASED, JUMP_PRESSED, INTERACT, END_REPLAY}
 
 # ---Time Trackers---
 # When recording Starts, this tracks the time
@@ -54,28 +54,30 @@ func _process(delta: float) -> void:
 		isRecording = !isRecording
 		if isRecording:
 			recorded_inputs.clear()
-			recorded_inputs.append(player.position) # This is becasue the first index in the array is noted as the starting location
-			recordingIndex = 1
+			recordingIndex = 0
 			recording_start_time = global_timer
+#			Sends initial velocity and position to recorded_run
+			recorded_run.initial_position = player.position
+			recorded_run.initial_velocity = player.velocity
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.START_REPLAY))
 			record_indicator.modulate = Color("Green")
 		else:
 #			This is to ensure that the recording lasts until the 
 #			recording process is stopped, not until the last input is entered
-			recorded_inputs.append(Vector2(recording_time_elapsed, actions.END))
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.END_REPLAY))
 			record_indicator.modulate = Color("Red")
 	
 #	Triggers Play Recording
 # Note: With this system, once you start playing a recording, the 
 # only way for it to stop is for the recording to finish
 	if !playingRecording and Input.is_action_just_pressed("play"):
-		if recorded_inputs.size() > 1:
+		if !recorded_inputs.is_empty():
 			if !isRecording:
 				print("Playign Recording")
 				playingRecording = true
-				recorded_run.position = recorded_inputs[0]
 				playback_start_time = global_timer
 				recorded_run.visible = true
-				recordingIndex = 1
+				recordingIndex = 0
 				#print("Is Visible")
 			else:
 				print("Recording is still in progress")
@@ -85,10 +87,6 @@ func _process(delta: float) -> void:
 	
 #	-----Recording-----
 	if isRecording:
-	# Jump
-		if Input.is_action_just_pressed("jump"):
-			recorded_inputs.append(Vector2(recording_time_elapsed, actions.JUMP_PRESSED))
-			#print("Pressed Jump", global_timer)
 	# Left
 		if Input.is_action_just_pressed("move_left"):
 			recorded_inputs.append(Vector2(recording_time_elapsed, actions.LEFT_PRESSED))
@@ -103,6 +101,10 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_released("move_right"):
 			recorded_inputs.append(Vector2(recording_time_elapsed, actions.RIGHT_RELEASED))
 			#print("Released Right", global_timer)
+	# Jump
+		if Input.is_action_just_pressed("jump"):
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.JUMP_PRESSED))
+			#print("Pressed Jump", global_timer)
 
 func _physics_process(delta: float) -> void:
 

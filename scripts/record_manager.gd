@@ -1,5 +1,5 @@
 extends Node2D
-# V1
+# V1 - Array System
 
 @onready var player: CharacterBody2D = %Player
 @onready var recorded_run: CharacterBody2D = $"../RecordedRun"
