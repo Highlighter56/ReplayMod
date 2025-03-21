@@ -227,6 +227,7 @@ scale = Vector2(28.0318, 27)
 mesh = SubResource("SphereMesh_g0hle")
 
 [node name="Recorded_Run" type="CharacterBody2D" parent="Record_Manager"]
+visible = false
 position = Vector2(17, 0)
 collision_layer = 2
 collision_mask = 2

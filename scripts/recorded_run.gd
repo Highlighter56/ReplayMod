@@ -62,6 +62,8 @@ func change_state(state:int):
 		record_manager.actions.RIGHT_RELEASED:
 			#print("Stop Right")
 			go_right=false
+		record_manager.actions.END:
+			toDefault()
 	#printState()
 
 # Replaces the get_axis function that takes in 

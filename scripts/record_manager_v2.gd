@@ -16,7 +16,7 @@ extends Node2D
 var recorded_inputs:Array = []
 # This enum will be used to note which action occured
 enum actions 	{JUMP_PRESSED, LEFT_PRESSED, LEFT_RELEASED, RIGHT_PRESSED, 
-				RIGHT_RELEASED}
+				RIGHT_RELEASED, INTERACT, END}
 
 # ---Time Trackers---
 # When recording Starts, this tracks the time
@@ -50,7 +50,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 #	Triggers Start/Stop Recording
-	if Input.is_action_just_pressed("record"):
+	if !playingRecording and Input.is_action_just_pressed("record"):
 		isRecording = !isRecording
 		if isRecording:
 			recorded_inputs.clear()
@@ -59,6 +59,9 @@ func _process(delta: float) -> void:
 			recording_start_time = global_timer
 			record_indicator.modulate = Color("Green")
 		else:
+#			This is to ensure that the recording lasts until the 
+#			recording process is stopped, not until the last input is entered
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.END))
 			record_indicator.modulate = Color("Red")
 	
 #	Triggers Play Recording
@@ -72,7 +75,8 @@ func _process(delta: float) -> void:
 				recorded_run.position = recorded_inputs[0]
 				playback_start_time = global_timer
 				recorded_run.visible = true
-				print("Is Visible")
+				recordingIndex = 1
+				#print("Is Visible")
 			else:
 				print("Recording is still in progress")
 		else: 
@@ -103,7 +107,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 
 #	-----Plays Recording-----
-
 #	Tracking/Updating recordingIndex to determine when inputs are received
 	if playingRecording:
 		if playback_time_elapsed >= recorded_inputs[recordingIndex].x:
@@ -113,10 +116,8 @@ func _physics_process(delta: float) -> void:
 #		if at end of array
 		if recordingIndex == recorded_inputs.size():
 			print("Recording Finished")
-			recorded_run.toDefault()
 			playingRecording=false
 #			Theres a problem where if the player ends a recording in mid air, that the recording now hangs in the air for a second before disapearing. Perhaps in the real build I can have the hollogram freeze in space, and then instead of popping away instantly, have it fade out. This might make the hanging look more realistic/fair
-			await get_tree().create_timer(.5).timeout
+			#await get_tree().create_timer(.5).timeout
 			recorded_run.visible = false
 	
-#	Based on determined inputs, playing the recorded run
