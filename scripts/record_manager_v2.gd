@@ -45,22 +45,38 @@ var isRecording:bool = false		# Notes when to be recording
 var playingRecording:bool = false	# Notes recording when recording is playing / when to start recording
 
 func _ready() -> void:
-	#recorded_run.visible = false
 	pass
 
 func _process(delta: float) -> void:
 #	Triggers Start/Stop Recording
 	if !playingRecording and Input.is_action_just_pressed("record"):
 		isRecording = !isRecording
+	# If Recording
 		if isRecording:
+			recording_start_time = global_timer
 			recorded_inputs.clear()
 			recordingIndex = 0
-			recording_start_time = global_timer
-#			Sends initial velocity and position to recorded_run
+		# Sends initial velocity and position to recorded_run
 			recorded_run.initial_position = player.position
 			recorded_run.initial_velocity = player.velocity
 			recorded_inputs.append(Vector2(recording_time_elapsed, actions.START_REPLAY))
+		# Checks if already pressing Left or Right
+		# if neither left or right are being pressed
+			if !Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
+				recorded_run.initial_left_right=0
+		# if only left is being pressed
+			if Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
+				recorded_run.initial_left_right=1
+		# if only right is being pressed
+			elif !Input.is_action_pressed("move_left") and Input.is_action_pressed("move_right"):
+				recorded_run.initial_left_right=2
+		# if both are being pressed
+			else:
+				recorded_run.initial_left_right=3
+				
+			
 			record_indicator.modulate = Color("Green")
+	# If Stopped Recording
 		else:
 #			This is to ensure that the recording lasts until the 
 #			recording process is stopped, not until the last input is entered
@@ -74,9 +90,8 @@ func _process(delta: float) -> void:
 		if !recorded_inputs.is_empty():
 			if !isRecording:
 				print("Playign Recording")
-				playingRecording = true
 				playback_start_time = global_timer
-				recorded_run.visible = true
+				playingRecording = true
 				recordingIndex = 0
 				#print("Is Visible")
 			else:
@@ -121,5 +136,3 @@ func _physics_process(delta: float) -> void:
 			playingRecording=false
 #			Theres a problem where if the player ends a recording in mid air, that the recording now hangs in the air for a second before disapearing. Perhaps in the real build I can have the hollogram freeze in space, and then instead of popping away instantly, have it fade out. This might make the hanging look more realistic/fair
 			#await get_tree().create_timer(.5).timeout
-			recorded_run.visible = false
-	
