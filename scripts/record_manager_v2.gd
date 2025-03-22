@@ -9,7 +9,7 @@ extends Node2D
 # global timers updated value
 @onready var global_timer: float = 0:
 	get():
-		return $"../Game_Manager".timer
+		return %Game_Manager.timer
 
 # An Array of Vector2's
 # inputs.x = time  inputs.y = action
@@ -64,15 +64,19 @@ func _process(delta: float) -> void:
 		# if neither left or right are being pressed
 			if !Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
 				recorded_run.initial_left_right=0
+				#print("initial_left_right is 0")
 		# if only left is being pressed
-			if Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
+			elif Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
 				recorded_run.initial_left_right=1
+				#print("initial_left_right is 1")
 		# if only right is being pressed
 			elif !Input.is_action_pressed("move_left") and Input.is_action_pressed("move_right"):
 				recorded_run.initial_left_right=2
+				#print("initial_left_right is 2")
 		# if both are being pressed
 			else:
 				recorded_run.initial_left_right=3
+				#print("initial_left_right is 3")
 				
 			
 			record_indicator.modulate = Color("Green")

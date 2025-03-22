@@ -1,7 +1,12 @@
 extends CharacterBody2D
 
-var SPEED = 200
-var JUMP_VELOCITY = -300.0
+
+@onready var game_manager: Node2D = %Game_Manager
+
+
+# Character Movment Properties
+@onready var SPEED:float = game_manager.speed
+@onready var JUMP_VELOCITY:float = game_manager.jump_velocity
 
 
 func _physics_process(delta: float) -> void:

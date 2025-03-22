@@ -1,14 +1,13 @@
 extends CharacterBody2D
 
 
-
-@onready var record_manager: Node2D = $".."
+@onready var game_manager: Node2D = %Game_Manager
+@onready var record_manager: Node2D = %Record_Manager
 
 
 # Character Movment Properties
-var SPEED = 200
-var JUMP_VELOCITY = -300.0
-
+@onready var SPEED:float = game_manager.speed
+@onready var JUMP_VELOCITY:float = game_manager.jump_velocity
 
 # Used as parameters to contorl the recorded run
 var jump_now:bool = false
@@ -83,7 +82,7 @@ func change_state(state:int):
 	# End Replay
 		record_manager.actions.END_REPLAY:
 			toDefault()
-	#printState()
+	#printState(state)
 
 # Replaces the get_axis function that takes
 # in two input actions
@@ -131,8 +130,14 @@ func toDefault():
 	go_right=false
 
 # Used for Debuging
-func printState():
+func printState(state:int):
 	print("----------")
+# This print line prints out the Key associated with the enum value
+# The keys() method is meant to be used on dictionaries. The output
+# is an array just the keys for that given dictionary. It appears that
+# this method also works on enums. In this case, state is acting as 
+# ths index of the key that we are looking to identify
+	print(record_manager.actions.keys()[state])
 	print("Jump: "+str(jump_now))
 	print("Left: "+str(go_left))
 	print("Right: "+str(go_right))
