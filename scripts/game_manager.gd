@@ -19,3 +19,7 @@ func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("jump"):
 		#print(Input.is_action_pressed("move_left"))
 		#print(Input.is_action_pressed("move_right"))
+
+
+func _on_interact(origin: Vector2) -> void:
+	print("Game Manager Recieved Interact Signal",origin)

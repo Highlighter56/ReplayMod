@@ -78,7 +78,6 @@ func _process(delta: float) -> void:
 				recorded_run.initial_left_right=3
 				#print("initial_left_right is 3")
 				
-			
 			record_indicator.modulate = Color("Green")
 	# If Stopped Recording
 		else:
@@ -103,8 +102,7 @@ func _process(delta: float) -> void:
 		else: 
 			print("Nothing has been recorded")
 	
-	
-#	-----Recording-----
+# Recording / Taking in Inputs
 	if isRecording:
 	# Left
 		if Input.is_action_just_pressed("move_left"):
@@ -124,6 +122,10 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			recorded_inputs.append(Vector2(recording_time_elapsed, actions.JUMP_PRESSED))
 			#print("Pressed Jump", global_timer)
+	# Interact
+		if Input.is_action_just_pressed("interact"):
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.INTERACT))
+			#print("Pressed Interact", global_timer)
 
 func _physics_process(delta: float) -> void:
 
@@ -131,7 +133,7 @@ func _physics_process(delta: float) -> void:
 #	Tracking/Updating recordingIndex to determine when inputs are received
 	if playingRecording:
 		if playback_time_elapsed >= recorded_inputs[recordingIndex].x:
-			recorded_run.change_state(recorded_inputs[recordingIndex].y)
+			recorded_run.update_state(recorded_inputs[recordingIndex].y)
 			recordingIndex+=1
 #		--When Recording Finished--
 #		if at end of array

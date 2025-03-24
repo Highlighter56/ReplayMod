@@ -22,6 +22,9 @@ var initial_position:Vector2
 # 0=no initial left/right; 1=initial left; 2=initial right; 3=initial left and right
 var initial_left_right:int = 0
 
+#Interaction Signal
+signal interact(origin:Vector2)
+
 func _ready() -> void:
 	pass
 
@@ -52,7 +55,7 @@ func _physics_process(delta: float) -> void:
 
 
 # Sets the control parameters: jump_now, go_left, and go_right
-func change_state(state:int):
+func update_state(state:int):
 	#print(state)
 	match state:
 	# Start Replay / Initial Conditions
@@ -78,7 +81,8 @@ func change_state(state:int):
 			jump_now=true
 	# Interact
 		record_manager.actions.INTERACT:
-			pass
+			print("Replay is Interacting")
+			emit_signal("interact",position)
 	# End Replay
 		record_manager.actions.END_REPLAY:
 			toDefault()

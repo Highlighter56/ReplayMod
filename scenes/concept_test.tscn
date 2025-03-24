@@ -430,3 +430,6 @@ tile_set = SubResource("TileSet_hcpa0")
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(-32, 5)
+
+[connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
+[connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]
