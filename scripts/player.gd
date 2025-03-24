@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 # Emits interaction signal when pressed
 	if Input.is_action_just_pressed("interact"):
-		print("Player is Interacting")
+		#print("Player is Interacting")
 		emit_signal("interact",position)
 
 func _physics_process(delta: float) -> void:
