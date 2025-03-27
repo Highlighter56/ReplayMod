@@ -3,7 +3,7 @@ extends Node2D
 
 # References
 @onready var player: CharacterBody2D = %Player
-@onready var record_indicator: MeshInstance2D = $Record_Indicator
+@onready var record_indicator: MeshInstance2D = $CanvasLayer/Record_Indicator
 @onready var recorded_run: CharacterBody2D = $Recorded_Run
 # This is set like this to make an easy way to grab the 
 # global timers updated value
