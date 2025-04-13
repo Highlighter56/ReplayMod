@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd8tve4dvpltq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kd2mm"]
+orientation = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm1hv"]
+size = Vector2(42, 6)
+
+[node name="Platform" type="AnimatableBody2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.752124, 0.191763, 1, 1)
+scale = Vector2(21, 3)
+mesh = SubResource("PlaneMesh_kd2mm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wm1hv")
+one_way_collision = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1bsahw05hva1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c4mgf"]
+orientation = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lp48"]
+size = Vector2(42, 6)
+
+[node name="Glass" type="StaticBody2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.360784, 0.776471, 0.384314, 1)
+scale = Vector2(21, 3)
+mesh = SubResource("PlaneMesh_c4mgf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7lp48")
