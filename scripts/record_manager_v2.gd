@@ -47,7 +47,7 @@ var playingRecording:bool = false	# Notes recording when recording is playing / 
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 #	Triggers Start/Stop Recording
 	if !playingRecording and Input.is_action_just_pressed("record"):
 		isRecording = !isRecording

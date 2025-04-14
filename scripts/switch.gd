@@ -13,7 +13,6 @@ func _ready() -> void:
 # Connects the Game Manager to the Switch
 	#game_manager.switch.connect(_on_switch)
 	pass
-	
 # Setting Initial Color
 	setColor()
 
