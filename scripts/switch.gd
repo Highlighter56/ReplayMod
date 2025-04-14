@@ -17,8 +17,8 @@ func _ready() -> void:
 	setColor()
 
 func _on_switch(origin:Vector2):
-	print("Switch Signal Received")
-	print(origin, position, abs(position.distance_to(origin)))
+	#print("Switch Signal Received")
+	#print(origin, position, abs(position.distance_to(origin)))
 	if abs(position.distance_to(origin)) <= 24:
 		state = !state
 		setColor()

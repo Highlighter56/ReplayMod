@@ -505,4 +505,5 @@ autoplay = "move"
 position = Vector2(-67, 19)
 
 [connection signal="switch" from="Game_Manager" to="Switch" method="_on_switch"]
+[connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
 [connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]
