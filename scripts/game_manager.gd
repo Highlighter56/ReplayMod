@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 		#print(Input.is_action_pressed("move_left"))
 		#print(Input.is_action_pressed("move_right"))
 
+
 # From here, a signal will be emitted to all switches. If the specified
 # origin is within the switches range, it will switch state.
 func _on_interact(origin: Vector2) -> void:

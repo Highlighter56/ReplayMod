@@ -126,9 +126,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			recorded_inputs.append(Vector2(recording_time_elapsed, actions.INTERACT))
 			#print("Pressed Interact", global_timer)
-
-func _physics_process(delta: float) -> void:
-
+	
 #	-----Plays Recording-----
 #	Tracking/Updating recordingIndex to determine when inputs are received
 	if playingRecording:
@@ -142,3 +140,6 @@ func _physics_process(delta: float) -> void:
 			playingRecording=false
 #			Theres a problem where if the player ends a recording in mid air, that the recording now hangs in the air for a second before disapearing. Perhaps in the real build I can have the hollogram freeze in space, and then instead of popping away instantly, have it fade out. This might make the hanging look more realistic/fair
 			#await get_tree().create_timer(.5).timeout
+
+func _physics_process(delta: float) -> void:
+	pass
