@@ -23,10 +23,12 @@ func setColor():
 		face.modulate = Color("Red")
 
 
-func _on_game_manager_interactable_trigger(origin: Vector2) -> void:
+func _on_game_manager_interactable_trigger(origin: Vector2, is_being_pressed:bool) -> void:
+	#print(is_being_pressed)
 	#print("Switch Signal Received")
 	#print(origin, position, abs(position.distance_to(origin)))
-	if abs(position.distance_to(origin)) <= range:
-		state = !state
-		setColor()
+	if is_being_pressed:
+		if abs(position.distance_to(origin)) <= range:
+			state = !state
+			setColor()
 	#receiver.trigger(state)

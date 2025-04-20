@@ -23,7 +23,7 @@ var initial_position:Vector2
 var initial_left_right:int = 0
 
 #Interaction Signal
-signal interact(origin:Vector2)
+signal interact(origin:Vector2, is_being_pressed:bool)
 
 
 func _ready() -> void:
@@ -83,7 +83,7 @@ func update_state(state:int):
 	# Interact
 		record_manager.actions.INTERACT:
 			#print("Replay is Interacting")
-			emit_signal("interact",position)
+			emit_signal("interact",position, true)
 	# End Replay
 		record_manager.actions.END_REPLAY:
 			toDefault()

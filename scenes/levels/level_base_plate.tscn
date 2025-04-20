@@ -496,9 +496,6 @@ Then, connect the Game Managers on_switch() method to the trigger"
 [node name="Switch" parent="Interactables/Group1" instance=ExtResource("6_stux0")]
 position = Vector2(99, -4)
 
-[node name="Switch2" parent="Interactables/Group1" instance=ExtResource("6_stux0")]
-position = Vector2(24, -4)
-
 [node name="Gate" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, 8)
 trigger = NodePath("../Switch")
@@ -524,6 +521,5 @@ autoplay = "move"
 position = Vector2(-84, 3)
 
 [connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group1/Switch" method="_on_game_manager_interactable_trigger"]
-[connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group1/Switch2" method="_on_game_manager_interactable_trigger"]
 [connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
 [connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]

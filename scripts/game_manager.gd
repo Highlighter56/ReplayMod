@@ -9,7 +9,7 @@ var timer:float = 0
 @export var speed:float = 200
 @export var jump_velocity:float = -300
 
-signal interactable_trigger(origin:Vector2)
+signal interactable_trigger(origin:Vector2, is_being_pressed:bool)
 
 func _ready() -> void:
 	#print("Emitting switch")
@@ -26,6 +26,9 @@ func _process(delta: float) -> void:
 
 # From here, a signal will be emitted to all switches. If the specified
 # origin is within the switches range, it will switch state.
-func _on_interact(origin: Vector2) -> void:
-	#print("Game Manager Recieved Interact Signal",origin)
-	interactable_trigger.emit(origin)
+func _on_interact(origin: Vector2, is_being_pressed:bool) -> void:
+	if is_being_pressed:
+		interactable_trigger.emit(origin, true)
+	else:
+		interactable_trigger.emit(origin, false)
+		
