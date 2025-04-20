@@ -474,27 +474,36 @@ tile_set = SubResource("TileSet_2pyol")
 
 [node name="Mid_Ground" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAADAAEAAQAAAAEAAAACAAEAAQAAAAEAAAABAAEAAQAAAAEAAAA=")
 tile_set = SubResource("TileSet_hcpa0")
 
-[node name="Folder_Switch_Gate" type="Node2D" parent="."]
+[node name="Interactables" type="Node2D" parent="."]
 
-[node name="Instructions" type="Label" parent="Folder_Switch_Gate"]
+[node name="Instructions" type="Label" parent="Interactables"]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Each Group contains a Switch, and all of its gates. In the inspector, connect the switches to its gates."
+text = "**Put this in full screen to read directions**
 
-[node name="Group1" type="Node2D" parent="Folder_Switch_Gate"]
+Each Group contains a Switch/Button and all of its Gates/Interactables
 
-[node name="Switch" parent="Folder_Switch_Gate/Group1" instance=ExtResource("6_stux0")]
+In the inspector, drag and drop the Switch/Button/Trigger to all of its Gates/Interacables
+
+Then, connect the Game Managers on_switch() method to the trigger"
+
+[node name="Group1" type="Node2D" parent="Interactables"]
+
+[node name="Switch" parent="Interactables/Group1" instance=ExtResource("6_stux0")]
 position = Vector2(99, -4)
 
-[node name="Gate" parent="Folder_Switch_Gate/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+[node name="Switch2" parent="Interactables/Group1" instance=ExtResource("6_stux0")]
+position = Vector2(24, -4)
+
+[node name="Gate" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, 8)
 trigger = NodePath("../Switch")
 
-[node name="Gate2" parent="Folder_Switch_Gate/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+[node name="Gate2" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, -8)
 trigger = NodePath("../Switch")
 
@@ -514,6 +523,7 @@ autoplay = "move"
 [node name="Glass" parent="Folder_Glass" instance=ExtResource("9_la4yo")]
 position = Vector2(-84, 3)
 
-[connection signal="switch" from="Game_Manager" to="Folder_Switch_Gate/Group1/Switch" method="_on_switch"]
+[connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group1/Switch" method="_on_game_manager_interactable_trigger"]
+[connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group1/Switch2" method="_on_game_manager_interactable_trigger"]
 [connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
 [connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]

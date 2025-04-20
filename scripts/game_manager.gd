@@ -9,7 +9,7 @@ var timer:float = 0
 @export var speed:float = 200
 @export var jump_velocity:float = -300
 
-signal switch(origin:Vector2)
+signal interactable_trigger(origin:Vector2)
 
 func _ready() -> void:
 	#print("Emitting switch")
@@ -28,4 +28,4 @@ func _process(delta: float) -> void:
 # origin is within the switches range, it will switch state.
 func _on_interact(origin: Vector2) -> void:
 	#print("Game Manager Recieved Interact Signal",origin)
-	switch.emit(origin)
+	interactable_trigger.emit(origin)
