@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://bnrsguofjjobn"]
+[gd_scene load_steps=19 format=4 uid="uid://bnrsguofjjobn"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_64psk"]
 [ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="2_fbeuq"]
-[ext_resource type="Script" path="res://scripts/recorded_run.gd" id="3_pqvwn"]
+[ext_resource type="PackedScene" uid="uid://4kt2wpw1uv70" path="res://scenes/recorded_run.tscn" id="3_jt26t"]
 [ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="4_jo0xv"]
 [ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="5_ychxe"]
 [ext_resource type="PackedScene" uid="uid://tqd4wxiaqbdb" path="res://scenes/switch.tscn" id="6_stux0"]
@@ -12,12 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://d1bsahw05hva1" path="res://scenes/glass.tscn" id="9_la4yo"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rqlnd"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_i17me"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yg1di"]
-radius = 4.0
-height = 14.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcpmc"]
 texture = ExtResource("4_jo0xv")
@@ -438,24 +432,8 @@ position = Vector2(1085, 63)
 scale = Vector2(88.0598, 84.8185)
 mesh = SubResource("SphereMesh_rqlnd")
 
-[node name="Recorded_Run" type="CharacterBody2D" parent="Record_Manager"]
+[node name="Recorded_Run" parent="Record_Manager" instance=ExtResource("3_jt26t")]
 unique_name_in_owner = true
-visible = false
-z_index = 8
-position = Vector2(17, 0)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_pqvwn")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Record_Manager/Recorded_Run"]
-modulate = Color(0.88841, 0.557869, 1.34766e-06, 1)
-position = Vector2(-2.38419e-07, -7.5)
-scale = Vector2(10, 7.5)
-mesh = SubResource("CapsuleMesh_i17me")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Record_Manager/Recorded_Run"]
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_yg1di")
 
 [node name="Player" parent="." instance=ExtResource("5_ychxe")]
 unique_name_in_owner = true
