@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bnrsguofjjobn"]
+[gd_scene load_steps=21 format=4 uid="uid://bnrsguofjjobn"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_64psk"]
 [ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="2_fbeuq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="5_ychxe"]
 [ext_resource type="PackedScene" uid="uid://tqd4wxiaqbdb" path="res://scenes/switch.tscn" id="6_stux0"]
 [ext_resource type="PackedScene" uid="uid://hq2cw5kp71ak" path="res://scenes/gate.tscn" id="7_p6p03"]
+[ext_resource type="PackedScene" uid="uid://7gmvc5t3dav1" path="res://scenes/button.tscn" id="8_i7u2o"]
 [ext_resource type="PackedScene" uid="uid://bd8tve4dvpltq" path="res://scenes/platform.tscn" id="8_l5a4g"]
 [ext_resource type="PackedScene" uid="uid://d1bsahw05hva1" path="res://scenes/glass.tscn" id="9_la4yo"]
 
@@ -474,7 +475,7 @@ tile_set = SubResource("TileSet_2pyol")
 
 [node name="Mid_Ground" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAADAAEAAQAAAAEAAAACAAEAAQAAAAEAAAABAAEAAQAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAADAAEAAQAAAAEAAAACAAEAAQAAAAEAAAABAAEAAQAAAAEAAAD9//3/AQAAAAEAAAD+//3/AQAAAAEAAAD///3/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAEAAAACAP3/AQAAAAEAAAA=")
 tile_set = SubResource("TileSet_hcpa0")
 
 [node name="Interactables" type="Node2D" parent="."]
@@ -504,6 +505,19 @@ trigger = NodePath("../Switch")
 position = Vector2(55, -8)
 trigger = NodePath("../Switch")
 
+[node name="Group2" type="Node2D" parent="Interactables"]
+
+[node name="Button" parent="Interactables/Group2" instance=ExtResource("8_i7u2o")]
+position = Vector2(-18, -69)
+
+[node name="Gate" parent="Interactables/Group2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(19, -60)
+trigger = NodePath("../Button")
+
+[node name="Gate2" parent="Interactables/Group2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(19, -76)
+trigger = NodePath("../Button")
+
 [node name="Folder_Platforms" type="Node2D" parent="."]
 
 [node name="Platform" parent="Folder_Platforms" instance=ExtResource("8_l5a4g")]
@@ -521,5 +535,6 @@ autoplay = "move"
 position = Vector2(-84, 3)
 
 [connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group1/Switch" method="_on_game_manager_interactable_trigger"]
+[connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group2/Button" method="_on_game_manager_interactable_trigger"]
 [connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
 [connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]

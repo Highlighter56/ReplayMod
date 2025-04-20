@@ -13,7 +13,6 @@ extends Area2D
 func _ready() -> void:
 # Setting Initial Color
 	setColor()
-	#print(collision_shape.shape.radius)
 
 
 func setColor():
@@ -23,10 +22,21 @@ func setColor():
 		face.modulate = Color("Red")
 
 
-func _on_game_manager_interactable_trigger(origin: Vector2) -> void:
-	#print("Switch Signal Received")
-	#print(origin, position, abs(position.distance_to(origin)))
+func _on_game_manager_interactable_trigger(origin: Vector2, is_being_pressed:bool) -> void:
+	print(is_being_pressed)
+# If signal is within range
 	if abs(position.distance_to(origin)) <= range:
-		state = !state
+		#print("Within Range")
+	# If signaling pressed
+		if is_being_pressed:
+			state = true
+	# If signaling released
+		else:
+			state = false
+	# Sets color regardless if pressed or released
 		setColor()
-	#receiver.trigger(state)
+
+# If 
+func _on_body_exited(body: Node2D) -> void:
+	state = false
+	setColor()
