@@ -17,11 +17,11 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+# Updates Timer
 	timer = timer + delta
 	
-	#if Input.is_action_just_pressed("jump"):
-		#print(Input.is_action_pressed("move_left"))
-		#print(Input.is_action_pressed("move_right"))
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()
 
 
 # From here, a signal will be emitted to all switches. If the specified
@@ -32,4 +32,3 @@ func _on_interact(origin: Vector2, is_being_pressed:bool) -> void:
 		interactable_trigger.emit(origin, true)
 	else:
 		interactable_trigger.emit(origin, false)
-		
