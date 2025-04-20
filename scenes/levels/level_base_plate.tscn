@@ -495,6 +495,7 @@ Then, connect the Game Managers on_switch() method to the trigger"
 [node name="Group1" type="Node2D" parent="Interactables"]
 
 [node name="Switch" parent="Interactables/Group1" instance=ExtResource("6_stux0")]
+z_index = 5
 position = Vector2(99, -4)
 
 [node name="Gate" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
@@ -508,6 +509,7 @@ trigger = NodePath("../Switch")
 [node name="Group2" type="Node2D" parent="Interactables"]
 
 [node name="Button" parent="Interactables/Group2" instance=ExtResource("8_i7u2o")]
+z_index = 5
 position = Vector2(-18, -69)
 
 [node name="Gate" parent="Interactables/Group2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]

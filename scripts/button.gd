@@ -23,7 +23,7 @@ func setColor():
 
 
 func _on_game_manager_interactable_trigger(origin: Vector2, is_being_pressed:bool) -> void:
-	print(is_being_pressed)
+	#print(is_being_pressed)
 # If signal is within range
 	if abs(position.distance_to(origin)) <= range:
 		#print("Within Range")
@@ -36,7 +36,7 @@ func _on_game_manager_interactable_trigger(origin: Vector2, is_being_pressed:boo
 	# Sets color regardless if pressed or released
 		setColor()
 
-# If 
+
 func _on_body_exited(body: Node2D) -> void:
 	state = false
 	setColor()

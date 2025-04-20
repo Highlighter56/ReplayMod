@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 # From here, a signal will be emitted to all switches. If the specified
 # origin is within the switches range, it will switch state.
 func _on_interact(origin: Vector2, is_being_pressed:bool) -> void:
+	print(is_being_pressed,": Is Interacting")
 	if is_being_pressed:
 		interactable_trigger.emit(origin, true)
 	else:

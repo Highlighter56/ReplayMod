@@ -81,9 +81,12 @@ func update_state(state:int):
 			#print("Jump Now")
 			jump_now=true
 	# Interact
-		record_manager.actions.INTERACT:
+		record_manager.actions.INTERACT_PRESSED:
 			#print("Replay is Interacting")
 			emit_signal("interact",position, true)
+		record_manager.actions.INTERACT_RELEASED:
+			#print("Replay is Interacting")
+			emit_signal("interact",position, false)
 	# End Replay
 		record_manager.actions.END_REPLAY:
 			toDefault()

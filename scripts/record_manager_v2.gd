@@ -16,7 +16,8 @@ extends Node2D
 var recorded_inputs:Array = []
 # This enum will be used to note which action occured
 enum actions {START_REPLAY, LEFT_PRESSED, LEFT_RELEASED, RIGHT_PRESSED, 
-			  RIGHT_RELEASED, JUMP_PRESSED, INTERACT, END_REPLAY}
+			  RIGHT_RELEASED, JUMP_PRESSED, INTERACT_PRESSED,
+			  INTERACT_RELEASED, END_REPLAY}
 
 # ---Time Trackers---
 # When recording Starts, this tracks the time
@@ -34,7 +35,7 @@ var playback_time_elapsed:float :
 
 var recordingIndex:int = 0:		# Index to loop through recording
 	set(value):
-#		These print statment are used when debugging
+		#These print statment are used when debugging
 		#print("---")
 		#print("Recording Index: "+str(recordingIndex))
 		#print("Playback Time Elapsed: "+str(playback_time_elapsed))
@@ -124,8 +125,11 @@ func _process(delta: float) -> void:
 			#print("Pressed Jump", global_timer)
 	# Interact
 		if Input.is_action_just_pressed("interact"):
-			recorded_inputs.append(Vector2(recording_time_elapsed, actions.INTERACT))
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.INTERACT_PRESSED))
 			#print("Pressed Interact", global_timer)
+		if Input.is_action_just_released("interact"):
+			recorded_inputs.append(Vector2(recording_time_elapsed, actions.INTERACT_RELEASED))
+			#print("Released Interact", global_timer)
 	
 #	-----Plays Recording-----
 #	Tracking/Updating recordingIndex to determine when inputs are received
