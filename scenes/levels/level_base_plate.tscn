@@ -1,25 +1,25 @@
-[gd_scene load_steps=20 format=4 uid="uid://urnqgp1sdo68"]
+[gd_scene load_steps=20 format=4 uid="uid://bnrsguofjjobn"]
 
-[ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="1_6nut4"]
-[ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="1_7ry4w"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_lugf2"]
-[ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="2_rmc1g"]
-[ext_resource type="Script" path="res://scripts/recorded_run.gd" id="3_4rlji"]
-[ext_resource type="PackedScene" uid="uid://tqd4wxiaqbdb" path="res://scenes/switch.tscn" id="6_xxlhg"]
-[ext_resource type="PackedScene" uid="uid://hq2cw5kp71ak" path="res://scenes/gate.tscn" id="7_k87lw"]
-[ext_resource type="PackedScene" uid="uid://bd8tve4dvpltq" path="res://scenes/platform.tscn" id="8_qajuu"]
-[ext_resource type="PackedScene" uid="uid://d1bsahw05hva1" path="res://scenes/glass.tscn" id="9_sbre7"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_64psk"]
+[ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="2_fbeuq"]
+[ext_resource type="Script" path="res://scripts/recorded_run.gd" id="3_pqvwn"]
+[ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="4_jo0xv"]
+[ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="5_ychxe"]
+[ext_resource type="PackedScene" uid="uid://tqd4wxiaqbdb" path="res://scenes/switch.tscn" id="6_stux0"]
+[ext_resource type="PackedScene" uid="uid://hq2cw5kp71ak" path="res://scenes/gate.tscn" id="7_p6p03"]
+[ext_resource type="PackedScene" uid="uid://bd8tve4dvpltq" path="res://scenes/platform.tscn" id="8_l5a4g"]
+[ext_resource type="PackedScene" uid="uid://d1bsahw05hva1" path="res://scenes/glass.tscn" id="9_la4yo"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_g0hle"]
+[sub_resource type="SphereMesh" id="SphereMesh_rqlnd"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_oc8lc"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i17me"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqlax"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yg1di"]
 radius = 4.0
 height = 14.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcpmc"]
-texture = ExtResource("1_6nut4")
+texture = ExtResource("4_jo0xv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -183,9 +183,9 @@ texture = ExtResource("1_6nut4")
 [sub_resource type="TileSet" id="TileSet_2pyol"]
 sources/0 = SubResource("TileSetAtlasSource_vcpmc")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7csn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6dny"]
 resource_name = "tiles"
-texture = ExtResource("1_6nut4")
+texture = ExtResource("4_jo0xv")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -379,7 +379,7 @@ texture = ExtResource("1_6nut4")
 [sub_resource type="TileSet" id="TileSet_hcpa0"]
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 0
-sources/1 = SubResource("TileSetAtlasSource_k7csn")
+sources/1 = SubResource("TileSetAtlasSource_v6dny")
 
 [sub_resource type="Animation" id="Animation_o7v3h"]
 length = 0.001
@@ -419,16 +419,15 @@ _data = {
 "move": SubResource("Animation_ui20q")
 }
 
-[node name="Concept_Test" type="Node2D"]
+[node name="Level_Base_Plate" type="Node2D"]
 
 [node name="Game_Manager" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_lugf2")
+script = ExtResource("1_64psk")
 
 [node name="Record_Manager" type="Node2D" parent="."]
 unique_name_in_owner = true
-z_index = 1
-script = ExtResource("1_7ry4w")
+script = ExtResource("2_fbeuq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Record_Manager"]
 
@@ -436,7 +435,7 @@ script = ExtResource("1_7ry4w")
 modulate = Color(1, 0, 0, 1)
 position = Vector2(1085, 63)
 scale = Vector2(88.0598, 84.8185)
-mesh = SubResource("SphereMesh_g0hle")
+mesh = SubResource("SphereMesh_rqlnd")
 
 [node name="Recorded_Run" type="CharacterBody2D" parent="Record_Manager"]
 unique_name_in_owner = true
@@ -445,17 +444,27 @@ z_index = 8
 position = Vector2(17, 0)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("3_4rlji")
+script = ExtResource("3_pqvwn")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Record_Manager/Recorded_Run"]
 modulate = Color(0.88841, 0.557869, 1.34766e-06, 1)
 position = Vector2(-2.38419e-07, -7.5)
 scale = Vector2(10, 7.5)
-mesh = SubResource("CapsuleMesh_oc8lc")
+mesh = SubResource("CapsuleMesh_i17me")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Record_Manager/Recorded_Run"]
 position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_rqlax")
+shape = SubResource("CapsuleShape2D_yg1di")
+
+[node name="Player" parent="." instance=ExtResource("5_ychxe")]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(-17, 7)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -465,35 +474,33 @@ tile_set = SubResource("TileSet_2pyol")
 
 [node name="Mid_Ground" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AADz//n/AQAGAAEAAADz//r/AQAGAAEAAADz//v/AQAGAAEAAADz//z/AQAGAAEAAADz//3/AQAGAAEAAADz//7/AQAGAAEAAADz////AQAGAAEAAADz/wAAAQAGAAEAAADz/wEAAQAGAAEAAADz/wIAAQAGAAEAAADz/wMAAQAGAAEAAADz/wQAAQAGAAEAAADz/wUAAQAGAAEAAADz/wYAAQAGAAEAAADz//j/AQAGAAEAAAD0//j/AQAGAAEAAAD1//j/AQAGAAEAAAD2//j/AQAGAAEAAAD3//j/AQAGAAEAAAD4//j/AQAGAAEAAAD5//j/AQAGAAEAAAD6//j/AQAGAAEAAAD7//j/AQAGAAEAAAD8//j/AQAGAAEAAAD9//j/AQAGAAEAAAD+//j/AQAGAAEAAAD///j/AQAGAAEAAAAAAPj/AQAGAAEAAAABAPj/AQAGAAEAAAACAPj/AQAGAAEAAAADAPj/AQAGAAEAAAAEAPj/AQAGAAEAAAAFAPj/AQAGAAEAAAAGAPj/AQAGAAEAAAAHAPj/AQAGAAEAAAAIAPj/AQAGAAEAAAAJAPj/AQAGAAEAAAAKAPj/AQAGAAEAAAALAPj/AQAGAAEAAAAMAPj/AQAGAAEAAAAMAAcAAQAGAAEAAAALAAcAAQAGAAEAAAAKAAcAAQAGAAEAAAAJAAcAAQAGAAEAAAAIAAcAAQAGAAEAAAAHAAcAAQAGAAEAAAAGAAcAAQAGAAEAAAAFAAcAAQAGAAEAAAAEAAcAAQAGAAEAAAADAAcAAQAGAAEAAAACAAcAAQAGAAEAAAABAAcAAQAGAAEAAAAAAAcAAQAGAAEAAAD//wcAAQAGAAEAAAD+/wcAAQAGAAEAAAD9/wcAAQAGAAEAAAD8/wcAAQAGAAEAAAD7/wcAAQAGAAEAAAD6/wcAAQAGAAEAAAD5/wcAAQAGAAEAAAD4/wcAAQAGAAEAAAD3/wcAAQAGAAEAAAD2/wcAAQAGAAEAAAD1/wcAAQAGAAEAAAD0/wcAAQAGAAEAAADz/wcAAQAGAAEAAAD0/wYAAQAEAAAAAAD1/wYAAQAEAAEAAAD2/wYAAQAEAAEAAAD3/wYAAQAEAAIAAAD4/wYAAQAEAAEAAAD5/wYAAQAEAAEAAAD6/wYAAQAEAAEAAAD7/wYAAQAEAAAAAAD8/wYAAQAEAAAAAAD9/wYAAQAEAAAAAAD+/wYAAQAEAAAAAAD//wYAAQAEAAAAAAAAAAYAAQAEAAAAAAABAAYAAQAEAAEAAAACAAYAAQAEAAEAAAADAAYAAQAEAAEAAAAEAAYAAQAFAAEAAAAFAAYAAQAFAAAAAAAGAAYAAQAFAAEAAAAHAAYAAQAFAAAAAAAIAAYAAQAFAAEAAAAJAAYAAQAFAAEAAAAKAAYAAQAFAAEAAAALAAYAAQAFAAAAAAD1/wUAAQAEAAAAAAD2/wUAAQAEAAAAAAD3/wUAAQAEAAAAAAD4/wUAAQAEAAAAAAD5/wUAAQAEAAAAAAD6/wUAAQAEAAAAAAABAAUAAQAEAAAAAAACAAUAAQAEAAAAAAADAAQAAQAEAAAAAAAEAAQAAQAEAAAAAAAFAAQAAQAEAAAAAAAGAAQAAQAEAAAAAAAHAAQAAQAEAAAAAAAIAAQAAQAEAAAAAAAJAAMAAQAEAAAAAAAKAAMAAQAEAAAAAAALAAMAAQAEAAAAAAAJAAUAAQAEAAEAAAAJAAQAAQAEAAEAAAAKAAQAAQAEAAIAAAAKAAUAAQAFAAAAAAALAAUAAQAFAAEAAAALAAQAAQAEAAEAAAAIAAUAAQAEAAEAAAAHAAUAAQAEAAEAAAAGAAUAAQAEAAEAAAAFAAUAAQAEAAEAAAAEAAUAAQAEAAEAAAADAAUAAQAEAAEAAAD8/wIAAQAEAAEAAAD8/wMAAQAFAAIAAAD9/wIAAQAEAAEAAAD9/wMAAQAEAAEAAAD+/wIAAQAEAAEAAAD+/wMAAQAEAAEAAAD//wIAAQAEAAEAAAD//wMAAQAEAAEAAAD3/wEAAQAEAAEAAAD3/wIAAQAEAAEAAAD4/wEAAQAEAAEAAAD4/wIAAQAEAAEAAAD5/wEAAQAEAAEAAAD5/wIAAQAEAAEAAAD0//7/AQAFAAIAAAD1//7/AQAEAAEAAAD0////AQAEAAEAAAD1////AQAEAAEAAAD4//3/AQAEAAEAAAD4//7/AQAEAAEAAAD5//3/AQAEAAEAAAD5//7/AQAEAAEAAAD6//3/AQAEAAEAAAD6//7/AQAEAAEAAAD7//3/AQAEAAEAAAD7//7/AQAEAAEAAAD///3/AQAEAAEAAAD///7/AQAEAAEAAAAAAP3/AQAEAAEAAAAAAP7/AQAEAAEAAAABAP3/AQAEAAIAAAABAP7/AQAEAAEAAAACAP3/AQAEAAEAAAACAP7/AQAEAAEAAAADAP3/AQAEAAEAAAADAP7/AQAEAAEAAAABAPz/AQAEAAEAAAACAPz/AQAEAAEAAAADAPz/AQAEAAEAAAAEAPz/AQAEAAEAAAAEAP3/AQAEAAEAAAAFAPz/AQAEAAEAAAAFAP3/AQAEAAEAAAD1/wIAAQAFAAMAAAD1/wMAAQAFAAQAAAD1/wQAAQAFAAUAAAAIAAEAAQAFAAMAAAAIAAIAAQAFAAQAAAAIAAMAAQAFAAUAAAD8//3/AQAJAAEAAAD9//3/AQAKAAEAAAD+//3/AQALAAEAAAD7/wUAAQABAAgAAAD4/wAAAQAIAAcAAAD0//3/AQAAAAcAAAD7//z/AQAHAAUAAAACAPv/AQAEAAgAAAACAAEAAQAEAAEAAAACAAIAAQAEAAEAAAADAAEAAQAEAAEAAAADAAIAAQAEAAEAAAAEAAEAAQAEAAEAAAAEAAIAAQAEAAEAAAAFAAEAAQAEAAEAAAAFAAIAAQAEAAEAAAAGAAEAAQAEAAEAAAAGAAIAAQAEAAEAAAAFAAAAAQAIAAgAAAD//wEAAQAIAAMAAAALAP7/AQAEAAEAAAAMAP7/AQAEAAEAAAANAP7/AQAEAAEAAAAOAP7/AQAEAAEAAAAPAP7/AQAEAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAA=")
 tile_set = SubResource("TileSet_hcpa0")
 
-[node name="Player" parent="." instance=ExtResource("2_rmc1g")]
-unique_name_in_owner = true
-z_index = 10
-position = Vector2(-17, 7)
+[node name="Folder_Switch_Gate" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-limit_left = -192
-limit_top = -106
-limit_right = 192
-limit_bottom = 106
+[node name="Instructions" type="Label" parent="Folder_Switch_Gate"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Each Group contains a Switch, and all of its gates. In the inspector, connect the switches to its gates."
 
-[node name="Switch" parent="." instance=ExtResource("6_xxlhg")]
+[node name="Group1" type="Node2D" parent="Folder_Switch_Gate"]
+
+[node name="Switch" parent="Folder_Switch_Gate/Group1" instance=ExtResource("6_stux0")]
 position = Vector2(99, -4)
 
-[node name="Gate" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("7_k87lw")]
+[node name="Gate" parent="Folder_Switch_Gate/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, 8)
 trigger = NodePath("../Switch")
 
-[node name="Gate2" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("7_k87lw")]
+[node name="Gate2" parent="Folder_Switch_Gate/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, -8)
 trigger = NodePath("../Switch")
 
 [node name="Folder_Platforms" type="Node2D" parent="."]
 
-[node name="Platform" parent="Folder_Platforms" instance=ExtResource("8_qajuu")]
+[node name="Platform" parent="Folder_Platforms" instance=ExtResource("8_l5a4g")]
 position = Vector2(147, 37)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Folder_Platforms/Platform"]
@@ -502,9 +509,11 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="Glass" parent="." instance=ExtResource("9_sbre7")]
-position = Vector2(-67, 19)
+[node name="Folder_Glass" type="Node2D" parent="."]
 
-[connection signal="switch" from="Game_Manager" to="Switch" method="_on_switch"]
+[node name="Glass" parent="Folder_Glass" instance=ExtResource("9_la4yo")]
+position = Vector2(-84, 3)
+
+[connection signal="switch" from="Game_Manager" to="Folder_Switch_Gate/Group1/Switch" method="_on_switch"]
 [connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
 [connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]
