@@ -1,27 +1,24 @@
 extends CharacterBody2D
 
-
 @onready var game_manager: Node2D = %Game_Manager
 
-
-# Character Movment Properties
+# Character Movement Properties
 @onready var SPEED:float = game_manager.speed
 @onready var JUMP_VELOCITY:float = game_manager.jump_velocity
 
 #Interaction Signal
-signal interact(origin:Vector2, is_being_pressed:bool)
-
+signal interaction_requested(origin: Vector2, is_being_pressed: bool)
 
 func _ready() -> void:
-	pass
+	# Connect player's signal to game manager
+	interaction_requested.connect(game_manager._on_interact)
 
 func _process(delta: float) -> void:
-# Emits interaction signal when pressed
+	# Emits interaction signal when pressed
 	if Input.is_action_just_pressed("interact"):
-		#print("Player is Interacting")
-		emit_signal("interact",position, true)
+		interaction_requested.emit(position, true)
 	if Input.is_action_just_released("interact"):
-		emit_signal("interact",position, false)
+		interaction_requested.emit(position, false)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity
@@ -29,8 +26,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump
-	# Note: Changing is_action_just_pressed to is_aciton_pressed changes
-	# jumping from press to jump, to hold to jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 

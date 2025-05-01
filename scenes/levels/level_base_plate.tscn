@@ -477,6 +477,7 @@ z_index = 5
 position = Vector2(99, -4)
 
 [node name="Gate" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+visible = false
 position = Vector2(55, 8)
 trigger = NodePath("../Switch")
 
@@ -513,8 +514,3 @@ autoplay = "move"
 
 [node name="Glass" parent="Folder_Glass" instance=ExtResource("9_la4yo")]
 position = Vector2(-84, 3)
-
-[connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group1/Switch" method="_on_game_manager_interactable_trigger"]
-[connection signal="interactable_trigger" from="Game_Manager" to="Interactables/Group2/Button" method="_on_game_manager_interactable_trigger"]
-[connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
-[connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]

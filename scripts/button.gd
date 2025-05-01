@@ -11,9 +11,9 @@ extends Area2D
 @onready var range:int = collision_shape.shape.radius
 
 func _ready() -> void:
-# Setting Initial Color
+	# Connect to game manager's signal
+	%Game_Manager.interactable_trigger.connect(_on_game_manager_interactable_trigger)
 	setColor()
-
 
 func setColor():
 	if state:

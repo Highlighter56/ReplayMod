@@ -23,11 +23,10 @@ var initial_position:Vector2
 var initial_left_right:int = 0
 
 #Interaction Signal
-signal interact(origin:Vector2, is_being_pressed:bool)
-
+signal interaction_requested(origin:Vector2, is_being_pressed:bool)
 
 func _ready() -> void:
-	pass
+	interaction_requested.connect(game_manager._on_interact)
 
 func _physics_process(delta: float) -> void:
 	
@@ -83,10 +82,10 @@ func update_state(state:int):
 	# Interact
 		record_manager.actions.INTERACT_PRESSED:
 			#print("Replay is Interacting")
-			emit_signal("interact",position, true)
+			interaction_requested.emit(position, true)
 		record_manager.actions.INTERACT_RELEASED:
 			#print("Replay is Interacting")
-			emit_signal("interact",position, false)
+			interaction_requested.emit(position, false)
 	# End Replay
 		record_manager.actions.END_REPLAY:
 			toDefault()

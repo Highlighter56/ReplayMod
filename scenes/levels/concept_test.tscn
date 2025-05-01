@@ -501,6 +501,3 @@ autoplay = "move"
 
 [node name="Glass" parent="." instance=ExtResource("8_smf5g")]
 position = Vector2(-67, 19)
-
-[connection signal="interact" from="Record_Manager/Recorded_Run" to="Game_Manager" method="_on_interact"]
-[connection signal="interact" from="Player" to="Game_Manager" method="_on_interact"]
