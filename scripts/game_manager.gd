@@ -5,11 +5,11 @@ var timer:float = 0
 
 # This is so I can adjust the attirbutes of the character in one
 # place, rather than in 2 places
-@export_group("Charater Attributes","")
+@export_group("Charater Attributes")
 @export var speed:float = 200
 @export var jump_velocity:float = -300
 
-signal interactable_trigger(origin:Vector2, is_being_pressed:bool)
+signal interaction_detected(origin:Vector2, is_being_pressed:bool)
 
 func _ready() -> void:
 	#print("Emitting switch")
@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 
 # From here, a signal will be emitted to all switches. If the specified
 # origin is within the switches range, it will switch state.
-func _on_interact(origin: Vector2, is_being_pressed:bool) -> void:
+func _on_interaction_requested(origin: Vector2, is_being_pressed:bool) -> void:
 	print(is_being_pressed,": Is Interacting")
 	if is_being_pressed:
-		interactable_trigger.emit(origin, true)
+		interaction_detected.emit(origin, true)
 	else:
-		interactable_trigger.emit(origin, false)
+		interaction_detected.emit(origin, false)

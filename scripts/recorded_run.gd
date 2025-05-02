@@ -26,7 +26,7 @@ var initial_left_right:int = 0
 signal interaction_requested(origin:Vector2, is_being_pressed:bool)
 
 func _ready() -> void:
-	interaction_requested.connect(game_manager._on_interact)
+	interaction_requested.connect(game_manager._on_interaction_requested)
 
 func _physics_process(delta: float) -> void:
 	

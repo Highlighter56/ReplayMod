@@ -11,7 +11,7 @@ signal interaction_requested(origin: Vector2, is_being_pressed: bool)
 
 func _ready() -> void:
 	# Connect player's signal to game manager
-	interaction_requested.connect(game_manager._on_interact)
+	interaction_requested.connect(game_manager._on_interaction_requested)
 
 func _process(delta: float) -> void:
 	# Emits interaction signal when pressed

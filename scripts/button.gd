@@ -2,17 +2,15 @@ extends Area2D
 
 
 
-@onready var game_manager: Node2D = %Game_Manager
 @onready var face: MeshInstance2D = $Face
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var range:int = $CollisionShape2D.shape.radius
 
 @export var state:bool = false
 
-@onready var range:int = collision_shape.shape.radius
 
 func _ready() -> void:
 	# Connect to game manager's signal
-	%Game_Manager.interactable_trigger.connect(_on_game_manager_interactable_trigger)
+	%Game_Manager.interaction_detected.connect(_on_game_manager_interaction_detected)
 	setColor()
 
 func setColor():
@@ -22,7 +20,7 @@ func setColor():
 		face.modulate = Color("Red")
 
 
-func _on_game_manager_interactable_trigger(origin: Vector2, is_being_pressed:bool) -> void:
+func _on_game_manager_interaction_detected(origin: Vector2, is_being_pressed:bool) -> void:
 	#print(is_being_pressed)
 # If signal is within range
 	if abs(position.distance_to(origin)) <= range:
