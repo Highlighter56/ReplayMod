@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 
 
 
-# From here, a signal will be emitted to all switches. If the specified
+# From here, a signal will be emitted to all sfwitches. If the specified
 # origin is within the switches range, it will switch state.
 func _on_interaction_requested(origin: Vector2, is_being_pressed:bool) -> void:
 	print(is_being_pressed,": Is Interacting")

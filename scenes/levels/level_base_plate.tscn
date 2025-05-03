@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bnrsguofjjobn"]
+[gd_scene load_steps=21 format=4 uid="uid://bnrsguofjjobn"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_64psk"]
 [ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="2_fbeuq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://7gmvc5t3dav1" path="res://scenes/button.tscn" id="8_i7u2o"]
 [ext_resource type="PackedScene" uid="uid://bd8tve4dvpltq" path="res://scenes/platform.tscn" id="8_l5a4g"]
 [ext_resource type="PackedScene" uid="uid://d1bsahw05hva1" path="res://scenes/glass.tscn" id="9_la4yo"]
+[ext_resource type="Theme" uid="uid://d0c5gtw8dhmjs" path="res://themes/theme_primary.tres" id="12_ibns0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rqlnd"]
 
@@ -420,6 +421,54 @@ _data = {
 [node name="Game_Manager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_64psk")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -11.5
+offset_right = -20.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/CenterContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme = ExtResource("12_ibns0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("12_ibns0")
+
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_ibns0")
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_ibns0")
+text = "New Game"
+
+[node name="Button2" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_ibns0")
+theme_type_variation = &"NewGameButton"
+text = "Continue"
+
+[node name="Button3" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Button4" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quite"
 
 [node name="Logic_Manager" type="Node2D" parent="."]
 unique_name_in_owner = true
