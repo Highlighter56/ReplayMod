@@ -2,6 +2,7 @@ extends Node2D
 
 # This is the global timer that controls everything
 var timer:float = 0
+var isPaused:bool = false
 
 # This is so I can adjust the attirbutes of the character in one
 # place, rather than in 2 places
@@ -20,8 +21,17 @@ func _process(delta: float) -> void:
 # Updates Timer
 	timer = timer + delta
 	
+#	Reset
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+# Pause
+	if Input.is_action_just_pressed("pause"):
+		isPaused = !isPaused
+		#get_tree().paused = isPaused
+		if isPaused:
+			Engine.time_scale = 0
+		else:
+			Engine.time_scale = 1
 
 
 # From here, a signal will be emitted to all switches. If the specified
