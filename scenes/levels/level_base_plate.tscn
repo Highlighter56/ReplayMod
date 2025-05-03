@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://bnrsguofjjobn"]
+[gd_scene load_steps=20 format=4 uid="uid://bnrsguofjjobn"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_64psk"]
 [ext_resource type="Script" path="res://scripts/record_manager_v2.gd" id="2_fbeuq"]
 [ext_resource type="PackedScene" uid="uid://4kt2wpw1uv70" path="res://scenes/recorded_run.tscn" id="3_jt26t"]
+[ext_resource type="Script" path="res://scripts/logic_manager.gd" id="4_5p8e3"]
 [ext_resource type="Texture2D" uid="uid://c8kluhlc0tlu1" path="res://assessts/sprites/world_tileset_3.1.png" id="4_jo0xv"]
 [ext_resource type="PackedScene" uid="uid://bw05ptiq1efv" path="res://scenes/player.tscn" id="5_ychxe"]
 [ext_resource type="PackedScene" uid="uid://tqd4wxiaqbdb" path="res://scenes/switch.tscn" id="6_stux0"]
@@ -420,6 +421,52 @@ _data = {
 unique_name_in_owner = true
 script = ExtResource("1_64psk")
 
+[node name="Logic_Manager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_5p8e3")
+
+[node name="Folder_Gates" type="Node2D" parent="Logic_Manager"]
+unique_name_in_owner = true
+
+[node name="Gate" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(55, 8)
+trigger = NodePath("../../Folder_Switches/Switch")
+
+[node name="Gate2" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(55, -8)
+trigger = NodePath("../../Folder_Switches/Switch")
+
+[node name="Gate3" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(19, -60)
+trigger = NodePath("../../Folder_Buttons/Button")
+
+[node name="Gate4" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(19, -76)
+trigger = NodePath("../../Folder_Buttons/Button")
+
+[node name="Folder_Switches" type="Node2D" parent="Logic_Manager"]
+unique_name_in_owner = true
+
+[node name="Switch" parent="Logic_Manager/Folder_Switches" instance=ExtResource("6_stux0")]
+z_index = 5
+position = Vector2(99, -4)
+
+[node name="Folder_Buttons" type="Node2D" parent="Logic_Manager"]
+unique_name_in_owner = true
+
+[node name="Button" parent="Logic_Manager/Folder_Buttons" instance=ExtResource("8_i7u2o")]
+z_index = 5
+position = Vector2(-18, -69)
+
+[node name="Player" parent="." instance=ExtResource("5_ychxe")]
+unique_name_in_owner = true
+position = Vector2(-17, 7)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
+
 [node name="Record_Manager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_fbeuq")
@@ -435,16 +482,6 @@ mesh = SubResource("SphereMesh_rqlnd")
 [node name="Recorded_Run" parent="Record_Manager" instance=ExtResource("3_jt26t")]
 unique_name_in_owner = true
 
-[node name="Player" parent="." instance=ExtResource("5_ychxe")]
-unique_name_in_owner = true
-z_index = 10
-position = Vector2(-17, 7)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-limit_smoothed = true
-position_smoothing_enabled = true
-
 [node name="TileMaps" type="Node2D" parent="."]
 
 [node name="Background" type="TileMapLayer" parent="TileMaps"]
@@ -455,49 +492,6 @@ tile_set = SubResource("TileSet_2pyol")
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAADAAEAAQAAAAEAAAACAAEAAQAAAAEAAAABAAEAAQAAAAEAAAD9//3/AQAAAAEAAAD+//3/AQAAAAEAAAD///3/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAEAAAACAP3/AQAAAAEAAAA=")
 tile_set = SubResource("TileSet_hcpa0")
-
-[node name="Interactables" type="Node2D" parent="."]
-
-[node name="Instructions" type="Label" parent="Interactables"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "**Put this in full screen to read directions**
-
-Each Group contains a Switch/Button and all of its Gates/Interactables
-
-In the inspector, drag and drop the Switch/Button/Trigger to all of its Gates/Interacables
-
-Then, connect the Game Managers on_switch() method to the trigger"
-
-[node name="Group1" type="Node2D" parent="Interactables"]
-
-[node name="Switch" parent="Interactables/Group1" instance=ExtResource("6_stux0")]
-z_index = 5
-position = Vector2(99, -4)
-
-[node name="Gate" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
-visible = false
-position = Vector2(55, 8)
-trigger = NodePath("../Switch")
-
-[node name="Gate2" parent="Interactables/Group1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
-position = Vector2(55, -8)
-trigger = NodePath("../Switch")
-
-[node name="Group2" type="Node2D" parent="Interactables"]
-
-[node name="Button" parent="Interactables/Group2" instance=ExtResource("8_i7u2o")]
-z_index = 5
-position = Vector2(-18, -69)
-
-[node name="Gate" parent="Interactables/Group2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
-position = Vector2(19, -60)
-trigger = NodePath("../Button")
-
-[node name="Gate2" parent="Interactables/Group2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
-position = Vector2(19, -76)
-trigger = NodePath("../Button")
 
 [node name="Folder_Platforms" type="Node2D" parent="."]
 

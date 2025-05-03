@@ -10,7 +10,7 @@ height = 14.0
 
 [node name="Recorded_Run" type="CharacterBody2D"]
 visible = false
-z_index = 8
+z_index = 4
 position = Vector2(17, 0)
 collision_layer = 2
 collision_mask = 2
