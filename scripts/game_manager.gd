@@ -2,18 +2,6 @@ extends Node2D
 
 # This is the global timer that controls everything
 var timer:float = 0
-# Simple way to minimize lines of code that are needed whne pausing
-var isPaused:bool = false:
-	set(value):
-		isPaused=value
-		Engine.time_scale = 1
-		if isPaused:
-			Engine.time_scale = 0
-#get_tree().paused = isPaused
-# Godot has a built in pause function. When its true, it freezes/disables all
-# nodes in the paused scene. If this function was placed into an auto load, 
-# then this would work. With this set up, where the listenign function is 
-# inside the scene that would be paused, there becomes no way to un-pause
 
 # This is so I can adjust the attirbutes of the character in one
 # place, rather than in 2 places
@@ -21,16 +9,37 @@ var isPaused:bool = false:
 @export var speed:float = 200
 @export var jump_velocity:float = -300
 
+# Interacting
 signal interaction_detected(origin:Vector2, is_being_pressed:bool)
 
+# Pausing
+@onready var pause_menu: CanvasLayer = %PauseMenu
+# Simple way to minimize lines of code that are needed whne pausing
+var isPaused:bool = false:
+	set(value):
+		isPaused=value
+		if isPaused:
+			Engine.time_scale = 0
+			pause_menu.visible = true
+		else:
+			Engine.time_scale = 1
+			pause_menu.visible = false
+#get_tree().paused = isPaused
+# Godot has a built in pause function. When its true, it freezes/disables all
+# nodes in the paused scene. If this function was placed into an auto load, 
+# then this would work. With this set up, where the listenign function is 
+# inside the scene that would be paused, there becomes no way to un-pause
+
+@onready var continue_button: Button = $"../PauseMenu/CenterContainer/PanelContainer/VBoxContainer/Continue_Button"
+
+
 func _ready() -> void:
-	#print("Emitting switch")
-	#switch.emit(Vector2.ZERO)
-	pass
+	continue_button.pressed.connect(_on_continue_button_pressed)
 
 func _process(delta: float) -> void:
 # Updates Timer
 	timer = timer + delta
+	
 	
 #	Reset
 	if Input.is_action_just_pressed("reset"):
@@ -43,8 +52,7 @@ func _process(delta: float) -> void:
 		isPaused = false
 
 
-
-# From here, a signal will be emitted to all sfwitches. If the specified
+# From here, a signal will be emitted to all switches. If the specified
 # origin is within the switches range, it will switch state.
 func _on_interaction_requested(origin: Vector2, is_being_pressed:bool) -> void:
 	print(is_being_pressed,": Is Interacting")
@@ -52,3 +60,7 @@ func _on_interaction_requested(origin: Vector2, is_being_pressed:bool) -> void:
 		interaction_detected.emit(origin, true)
 	else:
 		interaction_detected.emit(origin, false)
+
+
+func _on_continue_button_pressed():
+	isPaused = !isPaused

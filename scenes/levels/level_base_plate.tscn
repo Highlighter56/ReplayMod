@@ -423,6 +423,8 @@ unique_name_in_owner = true
 script = ExtResource("1_64psk")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
 
 [node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
 anchors_preset = 15
@@ -451,24 +453,24 @@ text = "Game Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="New Game" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="New_Game_Button" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme = ExtResource("12_ibns0")
 text = "New Game"
 
-[node name="Continue" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Continue_Button" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("12_ibns0")
 theme_type_variation = &"NewGameButton"
 text = "Continue"
 
-[node name="Settings" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Settings_Button" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "Settings"
 
-[node name="Quite" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Quite_Button" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "Quite"

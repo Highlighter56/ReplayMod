@@ -30,5 +30,3 @@ mesh = SubResource("SphereMesh_f6855")
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 mesh = SubResource("SphereMesh_enmpg")
-
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

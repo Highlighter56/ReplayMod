@@ -11,6 +11,7 @@ extends Area2D
 func _ready() -> void:
 	# Connect to game manager's signal
 	%Game_Manager.interaction_detected.connect(_on_game_manager_interaction_detected)
+	self.body_exited.connect(_on_body_exited)
 	setColor()
 
 func setColor():
