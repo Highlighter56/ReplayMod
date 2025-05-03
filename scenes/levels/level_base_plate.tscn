@@ -444,29 +444,32 @@ theme = ExtResource("12_ibns0")
 layout_mode = 2
 theme = ExtResource("12_ibns0")
 
-[node name="Label" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Menu_Title" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("12_ibns0")
 text = "Game Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="New Game" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("12_ibns0")
 text = "New Game"
 
-[node name="Button2" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("12_ibns0")
 theme_type_variation = &"NewGameButton"
 text = "Continue"
 
-[node name="Button3" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Settings"
 
-[node name="Button4" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Quite" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Quite"
 

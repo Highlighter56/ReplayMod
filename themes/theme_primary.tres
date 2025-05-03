@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d0c5gtw8dhmjs"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d0c5gtw8dhmjs"]
 
 [ext_resource type="StyleBox" uid="uid://btac30448rq3i" path="res://themes/button_primary.tres" id="1_ork2i"]
 [ext_resource type="StyleBox" uid="uid://b7ey53dxkey05" path="res://themes/panel_container_primary.tres" id="2_4ddkv"]
@@ -6,11 +6,20 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6m4y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8vwu"]
+bg_color = Color(1, 0.536197, 0.242089, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ggql"]
+bg_color = Color(0.668432, 0.331987, 0, 1)
+
 [resource]
+Button/font_sizes/font_size = 28
 Button/styles/normal = ExtResource("1_ork2i")
 Label/font_sizes/font_size = 35
 Label/styles/normal = SubResource("StyleBoxEmpty_e6m4y")
 NewGameButton/base_type = &"Button"
+NewGameButton/styles/hover = SubResource("StyleBoxFlat_u8vwu")
 NewGameButton/styles/normal = ExtResource("2_ga42a")
+NewGameButton/styles/pressed = SubResource("StyleBoxFlat_6ggql")
 PanelContainer/styles/panel = ExtResource("2_4ddkv")
 VBoxContainer/constants/separation = 20
