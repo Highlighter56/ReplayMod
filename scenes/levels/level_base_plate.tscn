@@ -526,17 +526,17 @@ position = Vector2(-64, 0)
 [node name="Gate2" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(104, 216)
 trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
-state = true
+is_inverted = true
 
 [node name="Gate3" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(104, 200)
 trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
-state = true
+is_inverted = true
 
 [node name="Gate4" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(104, 184)
 trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
-state = true
+is_inverted = true
 
 [node name="Large_Gate3" type="Node2D" parent="Logic_Manager/Folder_Gates/Demo"]
 position = Vector2(-128, 0)
@@ -559,17 +559,17 @@ position = Vector2(-192, 0)
 [node name="Gate2" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate4" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(104, 216)
 trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
-state = true
+is_inverted = true
 
 [node name="Gate3" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate4" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(104, 200)
 trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
-state = true
+is_inverted = true
 
 [node name="Gate4" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate4" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(104, 184)
 trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
-state = true
+is_inverted = true
 
 [node name="Folder_Switches" type="Node2D" parent="Logic_Manager"]
 unique_name_in_owner = true
