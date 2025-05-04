@@ -482,42 +482,130 @@ script = ExtResource("4_5p8e3")
 [node name="Folder_Gates" type="Node2D" parent="Logic_Manager"]
 unique_name_in_owner = true
 
-[node name="Gate" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+[node name="Concept_Test" type="Node" parent="Logic_Manager/Folder_Gates"]
+
+[node name="Gate" parent="Logic_Manager/Folder_Gates/Concept_Test" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, 8)
-trigger = NodePath("../../Folder_Switches/Switch")
+trigger = NodePath("../../../Folder_Switches/Concept_Test/Switch")
 
-[node name="Gate2" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+[node name="Gate2" parent="Logic_Manager/Folder_Gates/Concept_Test" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(55, -8)
-trigger = NodePath("../../Folder_Switches/Switch")
+trigger = NodePath("../../../Folder_Switches/Concept_Test/Switch")
 
-[node name="Gate3" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+[node name="Gate3" parent="Logic_Manager/Folder_Gates/Concept_Test" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(19, -60)
-trigger = NodePath("../../Folder_Buttons/Button")
+trigger = NodePath("../../../Folder_Buttons/Concept_Test/Button")
 
-[node name="Gate4" parent="Logic_Manager/Folder_Gates" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+[node name="Gate4" parent="Logic_Manager/Folder_Gates/Concept_Test" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
 position = Vector2(19, -76)
-trigger = NodePath("../../Folder_Buttons/Button")
+trigger = NodePath("../../../Folder_Buttons/Concept_Test/Button")
+
+[node name="Demo" type="Node" parent="Logic_Manager/Folder_Gates"]
+
+[node name="Large_Gate1" type="Node2D" parent="Logic_Manager/Folder_Gates/Demo"]
+
+[node name="Gate" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 232)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Gate2" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 216)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Gate3" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 200)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Gate4" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate1" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 184)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Large_Gate2" type="Node2D" parent="Logic_Manager/Folder_Gates/Demo"]
+position = Vector2(-64, 0)
+
+[node name="Gate2" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 216)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+state = true
+
+[node name="Gate3" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 200)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+state = true
+
+[node name="Gate4" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate2" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 184)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+state = true
+
+[node name="Large_Gate3" type="Node2D" parent="Logic_Manager/Folder_Gates/Demo"]
+position = Vector2(-128, 0)
+
+[node name="Gate2" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate3" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 216)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Gate3" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate3" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 200)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Gate4" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate3" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 184)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+
+[node name="Large_Gate4" type="Node2D" parent="Logic_Manager/Folder_Gates/Demo"]
+position = Vector2(-192, 0)
+
+[node name="Gate2" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate4" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 216)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+state = true
+
+[node name="Gate3" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate4" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 200)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+state = true
+
+[node name="Gate4" parent="Logic_Manager/Folder_Gates/Demo/Large_Gate4" node_paths=PackedStringArray("trigger") instance=ExtResource("7_p6p03")]
+position = Vector2(104, 184)
+trigger = NodePath("../../../../Folder_Switches/Demo/Switch")
+state = true
 
 [node name="Folder_Switches" type="Node2D" parent="Logic_Manager"]
 unique_name_in_owner = true
 
-[node name="Switch" parent="Logic_Manager/Folder_Switches" instance=ExtResource("6_stux0")]
+[node name="Concept_Test" type="Node" parent="Logic_Manager/Folder_Switches"]
+
+[node name="Switch" parent="Logic_Manager/Folder_Switches/Concept_Test" instance=ExtResource("6_stux0")]
 z_index = 5
 position = Vector2(99, -4)
+
+[node name="Demo" type="Node" parent="Logic_Manager/Folder_Switches"]
+
+[node name="Switch" parent="Logic_Manager/Folder_Switches/Demo" instance=ExtResource("6_stux0")]
+position = Vector2(48, 321)
 
 [node name="Folder_Buttons" type="Node2D" parent="Logic_Manager"]
 unique_name_in_owner = true
 
-[node name="Button" parent="Logic_Manager/Folder_Buttons" instance=ExtResource("8_i7u2o")]
+[node name="Concept_Test" type="Node" parent="Logic_Manager/Folder_Buttons"]
+
+[node name="Button" parent="Logic_Manager/Folder_Buttons/Concept_Test" instance=ExtResource("8_i7u2o")]
 z_index = 5
 position = Vector2(-18, -69)
 
+[node name="Demo" type="Node" parent="Logic_Manager/Folder_Buttons"]
+
+[node name="Button" parent="Logic_Manager/Folder_Buttons/Demo" instance=ExtResource("8_i7u2o")]
+position = Vector2(0, 401)
+
 [node name="Player" parent="." instance=ExtResource("5_ychxe")]
 unique_name_in_owner = true
-position = Vector2(-17, 7)
+position = Vector2(-129, 382)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 300)
+zoom = Vector2(2.5, 2.5)
 limit_smoothed = true
 position_smoothing_enabled = true
 
@@ -544,7 +632,7 @@ tile_set = SubResource("TileSet_2pyol")
 
 [node name="Mid_Ground" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAADAAEAAQAAAAEAAAACAAEAAQAAAAEAAAABAAEAAQAAAAEAAAD9//3/AQAAAAEAAAD+//3/AQAAAAEAAAD///3/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAEAAAACAP3/AQAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAQAAAAEAAAD//wEAAQAAAAEAAAD//wIAAQAAAAEAAAD+/wIAAQAAAAEAAAD9/wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAADAAEAAQAAAAEAAAACAAEAAQAAAAEAAAABAAEAAQAAAAEAAAD9//3/AQAAAAEAAAD+//3/AQAAAAEAAAD///3/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAEAAAACAP3/AQAAAAEAAADx/xoAAQAGAAEAAADy/xoAAQAGAAEAAADz/xoAAQAGAAEAAAD0/xoAAQAGAAEAAAD1/xoAAQAGAAEAAAD2/xoAAQAGAAEAAAD3/xoAAQAGAAEAAAD4/xoAAQAGAAEAAAD5/xoAAQAGAAEAAAD6/xoAAQAGAAEAAAD7/xoAAQAGAAEAAAD8/xoAAQAGAAEAAAD9/xoAAQAGAAEAAAACABoAAQAGAAEAAAADABoAAQAGAAEAAAAEABoAAQAGAAEAAAAFABoAAQAGAAEAAAAGABoAAQAGAAEAAAAHABoAAQAGAAEAAAAIABoAAQAGAAEAAAAJABoAAQAGAAEAAAAKABoAAQAGAAEAAAALABoAAQAGAAEAAAAMABoAAQAGAAEAAAANABoAAQAGAAEAAAAOABoAAQAGAAEAAAAPABoAAQAGAAEAAAAPABkAAQAGAAEAAAAPABgAAQAGAAEAAAAPABcAAQAGAAEAAAAPABYAAQAGAAEAAAAPABUAAQAGAAEAAAAPABQAAQAGAAEAAAAPABMAAQAGAAEAAAAPABIAAQAGAAEAAAAPABEAAQAGAAEAAAAPABAAAQAGAAEAAAAPAA8AAQAGAAEAAAAPAA4AAQAGAAEAAAAPAA0AAQAGAAEAAAAPAAwAAQAGAAEAAAAPAAsAAQAGAAEAAAAPAAoAAQAGAAEAAAAPAAkAAQAGAAEAAAAOAAkAAQAGAAEAAAANAAkAAQAGAAEAAAAMAAkAAQAGAAEAAAALAAkAAQAGAAEAAAAKAAkAAQAGAAEAAAAJAAkAAQAGAAEAAAAIAAkAAQAGAAEAAAAHAAkAAQAGAAEAAAAGAAkAAQAGAAEAAAAFAAkAAQAGAAEAAAAEAAkAAQAGAAEAAAADAAkAAQAGAAEAAAACAAkAAQAGAAEAAAABAAkAAQAGAAEAAAAAAAkAAQAGAAEAAAD//wkAAQAGAAEAAAD+/wkAAQAGAAEAAAD9/wkAAQAGAAEAAAD8/wkAAQAGAAEAAAD7/wkAAQAGAAEAAAD6/wkAAQAGAAEAAAD5/wkAAQAGAAEAAAD4/wkAAQAGAAEAAAD3/wkAAQAGAAEAAAD2/wkAAQAGAAEAAAD1/wkAAQAGAAEAAAD0/wkAAQAGAAEAAADz/wkAAQAGAAEAAADy/wkAAQAGAAEAAADx/wkAAQAGAAEAAADw/wkAAQAGAAEAAADw/xoAAQAGAAEAAADw/xkAAQAGAAEAAADw/xgAAQAGAAEAAADw/xcAAQAGAAEAAADw/xYAAQAGAAEAAADw/xUAAQAGAAEAAADw/xQAAQAGAAEAAADw/xMAAQAGAAEAAADw/xIAAQAGAAEAAADw/xEAAQAGAAEAAADw/xAAAQAGAAEAAADw/w8AAQAGAAEAAADw/w4AAQAGAAEAAADw/w0AAQAGAAEAAADw/wwAAQAGAAEAAADw/wsAAQAGAAEAAADw/woAAQAGAAEAAAD+/xoAAQAGAAEAAAD//xoAAQAGAAEAAAAAABoAAQAGAAEAAAABABoAAQAGAAEAAAAOABUAAQAGAAEAAAAOABQAAQAGAAEAAAAOABMAAQAGAAEAAAAOABIAAQAGAAEAAAAOABEAAQAGAAEAAAAOABYAAQAGAAEAAADx/xgAAQAGAAEAAADy/xgAAQAGAAEAAADz/xgAAQAGAAEAAAD0/xgAAQAGAAEAAAD1/xgAAQAGAAEAAAD2/xkAAQAGAAEAAAD3/xkAAQAGAAEAAAD4/xkAAQAGAAEAAAD5/xkAAQAGAAEAAADx/xkAAQAGAAEAAADy/xkAAQAGAAEAAADz/xkAAQAGAAEAAAD0/xkAAQAGAAEAAAD1/xkAAQAGAAEAAAD8/xYAAQAGAAEAAAD9/xYAAQAGAAEAAAD+/xYAAQAGAAEAAAD//xYAAQAGAAEAAAAAABYAAQAGAAEAAAABABYAAQAGAAEAAAACABYAAQAGAAEAAAD7/xUAAQAGAAEAAAD8/xUAAQAGAAEAAAD9/xUAAQAGAAEAAAD+/xUAAQAGAAEAAAD//xUAAQAGAAEAAAAAABUAAQAGAAEAAAABABUAAQAGAAEAAAACABUAAQAGAAEAAAADABUAAQAGAAEAAAAEABUAAQAGAAEAAAD6/xUAAQAGAAEAAAD5/xUAAQAGAAEAAAD4/xUAAQAGAAEAAAD3/xUAAQAGAAEAAAD2/xUAAQAGAAEAAAD5/xQAAQAGAAEAAAD6/xQAAQAGAAEAAAD7/xQAAQAGAAEAAAD8/xQAAQAGAAEAAAD9/xQAAQAGAAEAAAD+/xQAAQAGAAEAAAD//xQAAQAGAAEAAAAAABQAAQAGAAEAAADx/w4AAQAGAAEAAADz/w8AAQAGAAEAAADy/w8AAQAGAAEAAADx/w8AAQAGAAEAAADx/xAAAQAGAAEAAADy/xAAAQAGAAEAAADz/xAAAQAGAAEAAAD0/xAAAQAGAAEAAADy/xEAAQAGAAEAAADx/xEAAQAGAAEAAADx/w0AAQAGAAEAAADx/wwAAQAGAAEAAADx/wsAAQAGAAEAAADx/woAAQAGAAEAAADy/woAAQAGAAEAAADz/woAAQAGAAEAAAD0/woAAQAGAAEAAAD1/woAAQAGAAEAAAD2/woAAQAGAAEAAAD3/woAAQAGAAEAAAD4/woAAQAGAAEAAAD5/woAAQAGAAEAAAD6/woAAQAGAAEAAAD7/woAAQAGAAEAAAD8/woAAQAGAAEAAAD9/woAAQAGAAEAAAD+/woAAQAGAAEAAAD//woAAQAGAAEAAAAAAAoAAQAGAAEAAAABAAoAAQAGAAEAAAACAAoAAQAGAAEAAAADAAoAAQAGAAEAAAAEAAoAAQAGAAEAAAAFAAoAAQAGAAEAAAAGAAoAAQAGAAEAAAAHAAoAAQAGAAEAAAAIAAoAAQAGAAEAAAAJAAoAAQAGAAEAAAAKAAoAAQAGAAEAAAALAAoAAQAGAAEAAAAMAAoAAQAGAAEAAAANAAoAAQAGAAEAAAAOAAoAAQAGAAEAAAAOAAsAAQAGAAEAAAAOAAwAAQAGAAEAAAAOAA0AAQAGAAEAAAAOAA4AAQAGAAEAAAAOAA8AAQAGAAEAAAAOABAAAQAGAAEAAAAOABcAAQAGAAEAAAAOABgAAQAGAAEAAAAOABkAAQAGAAEAAADx/xIAAQAGAAEAAADx/xMAAQAGAAEAAADx/xQAAQAGAAEAAADx/xUAAQAGAAEAAADx/xYAAQAGAAEAAADx/xcAAQAGAAEAAADy/xIAAQAGAAEAAADz/xIAAQAGAAEAAADz/xEAAQAGAAEAAAD0/xEAAQAGAAEAAAD1/xEAAQAGAAEAAAD1/xAAAQAGAAEAAADy/xMAAQAGAAEAAADy/xQAAQAGAAEAAAALAAsAAQAGAAEAAAAMAAsAAQAGAAEAAAANAAsAAQAGAAEAAAANAAwAAQAGAAEAAAAKAAsAAQAGAAEAAAANABkAAQAGAAEAAAAMABkAAQAGAAEAAAALABkAAQAGAAEAAAAKABkAAQAGAAEAAAAJABkAAQAGAAEAAAAIABkAAQAGAAEAAAAHABkAAQAGAAEAAAADABYAAQAGAAEAAADy/wsAAQAGAAEAAADy/w4AAQAGAAEAAAD6/w8AAQAGAAEAAAD7/w8AAQAGAAEAAAD8/w4AAQAGAAEAAAD8/w8AAQAGAAEAAAD9/w4AAQAGAAEAAAD9/w8AAQAGAAEAAAD+/w4AAQAGAAEAAAD+/w8AAQAGAAEAAAD//w4AAQAGAAEAAAD//w8AAQAGAAEAAAAAAA4AAQAGAAEAAAAAAA8AAQAGAAEAAAABAA4AAQAGAAEAAAABAA8AAQAGAAEAAAACAA4AAQAGAAEAAAACAA8AAQAGAAEAAAACABAAAQAGAAEAAAADAA4AAQAGAAEAAAADAA8AAQAGAAEAAAADABAAAQAGAAEAAAAEAA8AAQAGAAEAAAAEABAAAQAGAAEAAAAFAA8AAQAGAAEAAAAFABAAAQAGAAEAAAAGAA8AAQAGAAEAAAAGABAAAQAGAAEAAAAHAA8AAQAGAAEAAAAHABAAAQAGAAEAAAAIAA8AAQAGAAEAAAAIABAAAQAGAAEAAAAJABAAAQAGAAEAAAABABAAAQAGAAEAAAAAABAAAQAGAAEAAAD//xAAAQAGAAEAAAD7/w4AAQAGAAEAAAD6/w4AAQAGAAEAAAD5/w4AAQAGAAEAAAD+/xAAAQAGAAEAAAD9/xAAAQAGAAEAAADy/xcAAQAGAAEAAAAEABYAAQAGAAEAAAAFABYAAQAGAAEAAAAGABcAAQAGAAEAAAAHABgAAQAGAAEAAAAIABgAAQAGAAEAAAAEABcAAQAGAAEAAAAFABcAAQAGAAEAAAAGABgAAQAGAAEAAAAGABkAAQAGAAEAAAAFABkAAQAGAAEAAAAEABkAAQAGAAEAAAADABkAAQAGAAEAAAACABkAAQAGAAEAAAAEABgAAQAGAAEAAAAFABgAAQAGAAEAAAADABcAAQAGAAEAAAAHABEAAQAGAAEAAAAIABEAAQAGAAEAAAAIABIAAQAGAAEAAAAJABMAAQAGAAEAAAAJABIAAQAGAAEAAAAJABEAAQAGAAEAAAAKABIAAQAGAAEAAAAKABMAAQAGAAEAAAAFABEAAQAGAAEAAAAGABEAAQAGAAEAAAAGABIAAQAGAAEAAAAHABIAAQAGAAEAAAAEABEAAQAGAAEAAAADABEAAQAGAAEAAAD2/xAAAQAGAAEAAAA=")
 tile_set = SubResource("TileSet_hcpa0")
 
 [node name="Folder_Platforms" type="Node2D" parent="."]
