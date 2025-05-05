@@ -1,4 +1,5 @@
 extends Node2D
+# Gate
 
 @onready var collider: CollisionShape2D = $CollisionShape2D
 
@@ -12,6 +13,7 @@ var trigger_state:bool :
 # If IS inverted:  Gate is OFF when switch is ON
 
 func _ready() -> void:
+	#print("Gate")
 	pass
 
 func _process(delta: float) -> void:
