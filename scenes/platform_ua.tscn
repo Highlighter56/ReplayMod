@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://crokb2l0labco"]
+[gd_scene load_steps=5 format=3 uid="uid://crokb2l0labco"]
 
 [ext_resource type="Script" path="res://scripts/platform_ua.gd" id="1_hn0rh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kd2mm"]
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r8cdo"]
+size = Vector2(2.1, 2.5)
 orientation = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm1hv"]
@@ -14,10 +18,17 @@ collision_mask = 0
 script = ExtResource("1_hn0rh")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0.752124, 0.191763, 1, 1)
+modulate = Color(0.540772, 0.00165406, 0.737733, 1)
 scale = Vector2(21, 3)
 mesh = SubResource("PlaneMesh_kd2mm")
 
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+scale = Vector2(21, 3)
+mesh = SubResource("PlaneMesh_r8cdo")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_wm1hv")
 one_way_collision = true

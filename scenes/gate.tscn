@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://hq2cw5kp71ak"]
+[gd_scene load_steps=5 format=3 uid="uid://hq2cw5kp71ak"]
 
 [ext_resource type="Script" path="res://scripts/gate.gd" id="1_p5byg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_87prp"]
 size = Vector2(4, 16)
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cjr61"]
+size = Vector2(5, 17)
 orientation = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_beh27"]
@@ -16,8 +20,14 @@ collision_mask = 3
 script = ExtResource("1_p5byg")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(1, 0.388235, 1, 1)
+modulate = Color(0.369112, 0.247575, 4.81308e-08, 1)
 mesh = SubResource("PlaneMesh_87prp")
 
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+modulate = Color(0.00784314, 0, 0, 1)
+z_index = -1
+mesh = SubResource("PlaneMesh_cjr61")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_beh27")
