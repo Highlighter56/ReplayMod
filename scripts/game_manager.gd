@@ -33,9 +33,6 @@ var isPaused:bool = false:
 @onready var continue_button: Button = $"../PauseMenu/CenterContainer/PanelContainer/VBoxContainer/Continue_Button"
 
 
-@onready var star: Area2D = $Star
-var star_picked_up:bool = false
-
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_button_pressed)
 
@@ -53,11 +50,6 @@ func _process(delta: float) -> void:
 	if isPaused and Input.is_action_just_pressed("interact"):
 		isPaused = false
 
-func _physics_process(delta: float) -> void:
-# Rotating the Star
-	if !star_picked_up:
-		star.rotate((PI/60)/4)
-
 
 # From here, a signal will be emitted to all switches. If the specified
 # origin is within the switches range, it will switch state.
@@ -70,8 +62,3 @@ func _on_interaction_requested(origin: Vector2, is_being_pressed:bool) -> void:
 
 func _on_continue_button_pressed():
 	isPaused = !isPaused
-
-
-func _on_star_body_entered(body: Node2D) -> void:
-	star_picked_up=true
-	star.queue_free()

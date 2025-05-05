@@ -6,7 +6,7 @@
 orientation = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r8cdo"]
-size = Vector2(2.1, 2.5)
+size = Vector2(2.15, 2.7)
 orientation = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm1hv"]
@@ -16,9 +16,10 @@ size = Vector2(42, 6)
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_hn0rh")
+speed = 100
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0.540772, 0.00165406, 0.737733, 1)
+modulate = Color(0.737255, 0, 1, 1)
 scale = Vector2(21, 3)
 mesh = SubResource("PlaneMesh_kd2mm")
 
